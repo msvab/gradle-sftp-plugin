@@ -1,0 +1,46 @@
+apply plugin: 'groovy'
+apply plugin: 'idea'
+
+version = '0.1'
+defaultTasks 'clean', 'build', 'jar'
+
+sourceCompatibility = '1.5'
+targetCompatibility = '1.5'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile gradleApi()
+    groovy localGroovy()
+
+    compile 'org.apache.sshd:sshd-core:0.8.0'
+
+    testCompile 'org.apache.camel:camel-core:2.10.3'
+    testCompile 'org.apache.camel:camel-ftp:2.10.3'
+}
+
+idea.project {
+    jdkName = '1.6'
+
+    ipr.withXml { provider ->
+        def node = provider.asNode()
+
+        // Use GIT
+        def vcsConfig = node.component.find { it.'@name' == 'VcsDirectoryMappings' }
+        vcsConfig.mapping[0].'@vcs' = 'Git'
+
+        // Set Gradle home
+        def gradleSettings = node.appendNode('component', [name: 'GradleSettings'])
+        gradleSettings.appendNode('option', [name: 'SDK_HOME', value: gradle.gradleHomeDir])
+    }
+}
+
+manifest {
+    attributes 'Implementation-Title': 'Gradle SFTP plugin',
+            'Implementation-Version': version,
+            'Built-By': System.getProperty('user.name'),
+            'Built-Date': new Date(),
+            'Built-JDK': System.getProperty('java.version')
+}
