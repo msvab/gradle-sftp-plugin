@@ -12,6 +12,6 @@ apply plugin: 'sftp'
 ```
 
 ## Configuration options
-* `port`: Port on which SFTP server will be started (default: 22)
-* `users`: Map of users with passwords that have access to this server (default: ['anonymous': ''])
-* `rootDir`: Local directory, that will serve as a root directory for the server (default: System.properties['java.io.tmpdir'] + '/gradle-sftp-plugin-home')
+* `port`: Port on which SFTP server will be started (default: `22`)
+* `users`: Map of users with passwords that have access to this server (default: `['anonymous': '']`)
+* `rootDir`: Local directory, that will serve as a root directory for the server (default: `System.properties['java.io.tmpdir'] + '/gradle-sftp-plugin-home'`)
