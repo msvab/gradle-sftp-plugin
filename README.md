@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/msvab/gradle-sftp-plugin.png)](http://travis-ci.org/msvab/gradle-sftp-plugin)
+[![Build Status](https://travis-ci.org/msvab/gradle-sftp-plugin.png?branch=master)](https://travis-ci.org/msvab/gradle-sftp-plugin)
 
 # Gradle SFTP Plugin
 
